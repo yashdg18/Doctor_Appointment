@@ -1,8 +1,4 @@
-/**
- * Seed Script — adds sample doctors to MongoDB
- * Run: node seedDoctors.js
- * Make sure your .env file is set up first!
- */
+
 
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
