@@ -1,8 +1,8 @@
-const express = require("express");
-const colors = require("colors");
-const morgan = require("morgan");
-const dotenv = require("dotenv");
-const path = require("path");
+const express  = require("express");
+const colors   = require("colors");
+const morgan   = require("morgan");
+const dotenv   = require("dotenv");
+const path     = require("path");
 const connectDB = require("./config/db");
 
 dotenv.config();
@@ -17,10 +17,12 @@ app.use("/api/v1/user",        require("./routes/userRoutes"));
 app.use("/api/v1/doctor",      require("./routes/doctorRoutes"));
 app.use("/api/v1/appointment", require("./routes/appointmentRoutes"));
 
-// ✅ Serve React frontend in production
-app.use(express.static(path.join(__dirname, "./client/build")));
+// ✅ Serve React build
+app.use(express.static(path.join(__dirname, "client/build")));
+
+// ✅ All other routes go to React
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  res.sendFile(path.join(__dirname, "client/build", "index.html"));
 });
 
 const PORT = process.env.PORT || 8080;
